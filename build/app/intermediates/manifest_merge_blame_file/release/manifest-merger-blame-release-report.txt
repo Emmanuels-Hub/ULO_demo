@@ -1,0 +1,194 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.sample"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="34" />
+9-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:3:5-66
+11-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:3:22-64
+12    <uses-permission
+12-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:5:5-79
+13        android:name="android.permission.READ_EXTERNAL_STORAGE"
+13-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:5:22-77
+14        android:maxSdkVersion="32" />
+14-->[:file_picker] C:\Users\Emmanuel\StudioProjects\ULO_demo\build\file_picker\intermediates\merged_manifest\release\AndroidManifest.xml:11:9-35
+15    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+15-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:6:5-80
+15-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:6:22-78
+16    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+16-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:7:5-70
+16-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:7:22-68
+17    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+17-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:6:5-80
+17-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:6:22-78
+18    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+18-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:5:5-79
+18-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:5:22-77
+19    <!--
+20         Required to query activities that can process text, see:
+21         https://developer.android.com/training/package-visibility and
+22         https://developer.android.com/reference/android/content/Intent#ACTION_PROCESS_TEXT.
+23
+24         In particular, this is used by the Flutter engine in io.flutter.plugin.text.ProcessTextPlugin.
+25    -->
+26    <queries>
+26-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:50:5-55:15
+27        <intent>
+27-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:51:9-54:18
+28            <action android:name="android.intent.action.PROCESS_TEXT" />
+28-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:52:13-72
+28-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:52:21-70
+29
+30            <data android:mimeType="text/plain" />
+30-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:53:13-50
+30-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:53:19-48
+31        </intent>
+32        <intent>
+32-->[:file_picker] C:\Users\Emmanuel\StudioProjects\ULO_demo\build\file_picker\intermediates\merged_manifest\release\AndroidManifest.xml:14:9-18:18
+33            <action android:name="android.intent.action.GET_CONTENT" />
+33-->[:file_picker] C:\Users\Emmanuel\StudioProjects\ULO_demo\build\file_picker\intermediates\merged_manifest\release\AndroidManifest.xml:15:13-72
+33-->[:file_picker] C:\Users\Emmanuel\StudioProjects\ULO_demo\build\file_picker\intermediates\merged_manifest\release\AndroidManifest.xml:15:21-69
+34
+35            <data android:mimeType="*/*" />
+35-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:53:13-50
+35-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:53:19-48
+36        </intent>
+37    </queries>
+38
+39    <permission
+39-->[androidx.core:core:1.9.0] C:\Users\Emmanuel\.gradle\caches\transforms-3\88d11c77ce10f90dcb35d12ce545931a\transformed\core-1.9.0\AndroidManifest.xml:22:5-24:47
+40        android:name="com.example.sample.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+40-->[androidx.core:core:1.9.0] C:\Users\Emmanuel\.gradle\caches\transforms-3\88d11c77ce10f90dcb35d12ce545931a\transformed\core-1.9.0\AndroidManifest.xml:23:9-81
+41        android:protectionLevel="signature" />
+41-->[androidx.core:core:1.9.0] C:\Users\Emmanuel\.gradle\caches\transforms-3\88d11c77ce10f90dcb35d12ce545931a\transformed\core-1.9.0\AndroidManifest.xml:24:9-44
+42
+43    <uses-permission android:name="com.example.sample.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+43-->[androidx.core:core:1.9.0] C:\Users\Emmanuel\.gradle\caches\transforms-3\88d11c77ce10f90dcb35d12ce545931a\transformed\core-1.9.0\AndroidManifest.xml:26:5-97
+43-->[androidx.core:core:1.9.0] C:\Users\Emmanuel\.gradle\caches\transforms-3\88d11c77ce10f90dcb35d12ce545931a\transformed\core-1.9.0\AndroidManifest.xml:26:22-94
+44
+45    <application
+46        android:name="android.app.Application"
+46-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:13:9-42
+47        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+47-->[androidx.core:core:1.9.0] C:\Users\Emmanuel\.gradle\caches\transforms-3\88d11c77ce10f90dcb35d12ce545931a\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
+48        android:icon="@mipmap/ic_launcher"
+48-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:14:9-43
+49        android:label="Ulo AI" >
+49-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:12:9-31
+50        android:requestLegacyExternalStorage="true"
+51        <activity
+51-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:17:9-38:20
+52            android:name="com.example.sample.MainActivity"
+52-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:18:13-41
+53            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+53-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:23:13-163
+54            android:exported="true"
+54-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:19:13-36
+55            android:hardwareAccelerated="true"
+55-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:24:13-47
+56            android:launchMode="singleTop"
+56-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:20:13-43
+57            android:taskAffinity=""
+57-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:21:13-36
+58            android:theme="@style/LaunchTheme"
+58-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:22:13-47
+59            android:windowSoftInputMode="adjustResize" >
+59-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:25:13-55
+60
+61            <!--
+62                 Specifies an Android theme to apply to this Activity as soon as
+63                 the Android process has started. This theme is visible to the user
+64                 while the Flutter UI initializes. After that, this theme continues
+65                 to determine the Window background behind the Flutter UI.
+66            -->
+67            <meta-data
+67-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:30:13-33:17
+68                android:name="io.flutter.embedding.android.NormalTheme"
+68-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:31:15-70
+69                android:resource="@style/NormalTheme" />
+69-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:32:15-52
+70
+71            <intent-filter>
+71-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:34:13-37:29
+72                <action android:name="android.intent.action.MAIN" />
+72-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:35:17-68
+72-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:35:25-66
+73
+74                <category android:name="android.intent.category.LAUNCHER" />
+74-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:36:17-76
+74-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:36:27-74
+75            </intent-filter>
+76        </activity>
+77        <!--
+78             Don't delete the meta-data below.
+79             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+80        -->
+81        <meta-data
+81-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:41:9-43:33
+82            android:name="flutterEmbedding"
+82-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:42:13-44
+83            android:value="2" />
+83-->C:\Users\Emmanuel\StudioProjects\ULO_demo\android\app\src\main\AndroidManifest.xml:43:13-30
+84
+85        <provider
+85-->[:open_file] C:\Users\Emmanuel\StudioProjects\ULO_demo\build\open_file\intermediates\merged_manifest\release\AndroidManifest.xml:11:9-20:20
+86            android:name="com.crazecoder.openfile.FileProvider"
+86-->[:open_file] C:\Users\Emmanuel\StudioProjects\ULO_demo\build\open_file\intermediates\merged_manifest\release\AndroidManifest.xml:12:13-64
+87            android:authorities="com.example.sample.fileProvider.com.crazecoder.openfile"
+87-->[:open_file] C:\Users\Emmanuel\StudioProjects\ULO_demo\build\open_file\intermediates\merged_manifest\release\AndroidManifest.xml:13:13-88
+88            android:exported="false"
+88-->[:open_file] C:\Users\Emmanuel\StudioProjects\ULO_demo\build\open_file\intermediates\merged_manifest\release\AndroidManifest.xml:14:13-37
+89            android:grantUriPermissions="true" >
+89-->[:open_file] C:\Users\Emmanuel\StudioProjects\ULO_demo\build\open_file\intermediates\merged_manifest\release\AndroidManifest.xml:15:13-47
+90            <meta-data
+90-->[:open_file] C:\Users\Emmanuel\StudioProjects\ULO_demo\build\open_file\intermediates\merged_manifest\release\AndroidManifest.xml:17:13-19:53
+91                android:name="android.support.FILE_PROVIDER_PATHS"
+91-->[:open_file] C:\Users\Emmanuel\StudioProjects\ULO_demo\build\open_file\intermediates\merged_manifest\release\AndroidManifest.xml:18:17-67
+92                android:resource="@xml/filepaths" />
+92-->[:open_file] C:\Users\Emmanuel\StudioProjects\ULO_demo\build\open_file\intermediates\merged_manifest\release\AndroidManifest.xml:19:17-50
+93        </provider>
+94
+95        <uses-library
+95-->[androidx.window:window:1.0.0-beta04] C:\Users\Emmanuel\.gradle\caches\transforms-3\4f86f4c61b99618f34b2dcd4061fd4e1\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
+96            android:name="androidx.window.extensions"
+96-->[androidx.window:window:1.0.0-beta04] C:\Users\Emmanuel\.gradle\caches\transforms-3\4f86f4c61b99618f34b2dcd4061fd4e1\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
+97            android:required="false" />
+97-->[androidx.window:window:1.0.0-beta04] C:\Users\Emmanuel\.gradle\caches\transforms-3\4f86f4c61b99618f34b2dcd4061fd4e1\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
+98        <uses-library
+98-->[androidx.window:window:1.0.0-beta04] C:\Users\Emmanuel\.gradle\caches\transforms-3\4f86f4c61b99618f34b2dcd4061fd4e1\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
+99            android:name="androidx.window.sidecar"
+99-->[androidx.window:window:1.0.0-beta04] C:\Users\Emmanuel\.gradle\caches\transforms-3\4f86f4c61b99618f34b2dcd4061fd4e1\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
+100            android:required="false" />
+100-->[androidx.window:window:1.0.0-beta04] C:\Users\Emmanuel\.gradle\caches\transforms-3\4f86f4c61b99618f34b2dcd4061fd4e1\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
+101
+102        <provider
+102-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Emmanuel\.gradle\caches\transforms-3\0e596a29c81eee8136797ee227d7c500\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+103            android:name="androidx.startup.InitializationProvider"
+103-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Emmanuel\.gradle\caches\transforms-3\0e596a29c81eee8136797ee227d7c500\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:25:13-67
+104            android:authorities="com.example.sample.androidx-startup"
+104-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Emmanuel\.gradle\caches\transforms-3\0e596a29c81eee8136797ee227d7c500\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:26:13-68
+105            android:exported="false" >
+105-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Emmanuel\.gradle\caches\transforms-3\0e596a29c81eee8136797ee227d7c500\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:27:13-37
+106            <meta-data
+106-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Emmanuel\.gradle\caches\transforms-3\0e596a29c81eee8136797ee227d7c500\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+107                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+107-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Emmanuel\.gradle\caches\transforms-3\0e596a29c81eee8136797ee227d7c500\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:30:17-75
+108                android:value="androidx.startup" />
+108-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Emmanuel\.gradle\caches\transforms-3\0e596a29c81eee8136797ee227d7c500\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:31:17-49
+109            <meta-data
+109-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Emmanuel\.gradle\caches\transforms-3\2ba90a88419e52df84317314c233ce0c\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:31:13-33:52
+110                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+110-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Emmanuel\.gradle\caches\transforms-3\2ba90a88419e52df84317314c233ce0c\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:32:17-78
+111                android:value="androidx.startup" />
+111-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Emmanuel\.gradle\caches\transforms-3\2ba90a88419e52df84317314c233ce0c\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:33:17-49
+112        </provider>
+113    </application>
+114
+115</manifest>
