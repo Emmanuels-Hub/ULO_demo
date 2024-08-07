@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hive/hive.dart';
 import 'package:lottie/lottie.dart';
-
-import 'home.dart';
 import 'onboarding_screen.dart';
 
 class Loading extends StatefulWidget {
-  const Loading({super.key,});
+  const Loading({
+    super.key,
+  });
 
   @override
   State<Loading> createState() => _LoadingState();
 }
 
-class _LoadingState extends State<Loading> with TickerProviderStateMixin{
+class _LoadingState extends State<Loading> with TickerProviderStateMixin {
   late final AnimationController _controller;
 
   @override
@@ -31,10 +30,9 @@ class _LoadingState extends State<Loading> with TickerProviderStateMixin{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:
-      Center(
+      body: Center(
         child: Lottie.asset(
-            'assets/splash.json',
+          'assets/splash.json',
           width: 200,
           height: 200,
           controller: _controller,
@@ -42,7 +40,7 @@ class _LoadingState extends State<Loading> with TickerProviderStateMixin{
             _controller
               ..duration = composition.duration
               ..forward().then((value) {
-                 Get.off(() => const OnboardingScreen());
+                Get.off(() => const OnboardingScreen());
               });
           },
         ),

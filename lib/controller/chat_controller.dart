@@ -4,12 +4,16 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:hive/hive.dart';
 import '../chat_objects/chat_assistance.dart';
+import '../model/global.dart';
 
 class MessageController extends GetxController {
-  var messages = <ChatAssistance>[ChatAssistance(role: 'bot', part: 'Hello, How can i help you today?')].obs;
+  var messages = <ChatAssistance>[
+    ChatAssistance(role: 'bot', part: 'Hello, How can i help you today?')
+  ].obs;
   final scroll = ScrollController();
 
-  late Box<ChatAssistance> chatBox = Hive.box<ChatAssistance>('chat_assistance');
+  late Box<ChatAssistance> chatBox =
+      Hive.box<ChatAssistance>('chat_assistance');
 
   void loadMessages() {
     messages.addAll(chatBox.values);
@@ -31,9 +35,8 @@ class MessageController extends GetxController {
       chatBox.delete(lastMessage.key);
     }
   }
-  
-  void scrolldown()
-  {
+
+  void scrolldown() {
     scroll.animateTo(scroll.position.maxScrollExtent,
         duration: const Duration(milliseconds: 500), curve: Curves.ease);
   }
@@ -49,24 +52,29 @@ class MessageController extends GetxController {
 
   Future<String?> getMessage(msg) async {
     final history = buildHistory();
-    try{
-      var request = await http.post(
-        Uri.parse('https://bevel-ai.onrender.com/generate/'),
-        headers: {"Content-Type": "application/json"},
-        body: jsonEncode({"prompt": msg, "history": history}),
-      );
+    var timeout = 3;
 
-      if (request.statusCode == 200) {
-        final data = request.body;
-        return data;
-      } else {
-        return 'Failed to load data';
+    String resData = 'Internet ERROR: Please resend previous message.';
+    while (timeout >= 0) {
+      try {
+        var request = await http.post(
+          Uri.parse('${serverUrl}generate/'),
+          headers: {"Content-Type": "application/json"},
+          body: jsonEncode({"prompt": msg, "history": history}),
+        );
+
+        if (request.statusCode == 200) {
+          final data = request.body;
+          resData = data;
+          break;
+        } else {
+          timeout--;
+        }
+      } catch (e) {
+        timeout--;
       }
     }
-    catch(e){
-      return 'Error Message: $e';
-    }
-
+    return resData;
   }
 
   @override
@@ -74,5 +82,4 @@ class MessageController extends GetxController {
     super.onInit();
     loadMessages();
   }
-
 }

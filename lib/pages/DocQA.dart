@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:open_file/open_file.dart';
+import 'package:ulo/model/global.dart';
 import '../chat_objects/chat_doc.dart';
 import '../controller/doc_controller.dart';
-import '../model/func.dart';
 import '../widget/dialogBox.dart';
 
 class ChatGeometry extends StatefulWidget {
@@ -44,50 +44,50 @@ class _ChatGeometryState extends State<ChatGeometry> {
                   Get.back();
                 },
               );
-
             },
           ),
         ],
       ),
-      body:  Column(
+      body: Column(
         children: [
           Expanded(
               child: Obx(
-                    () => ListView.builder(
-                  controller: docController.scroll,
-                  physics: const BouncingScrollPhysics(),
-                  itemCount: docController.messages.length,
-                  itemBuilder: (context, index) {
-                    final chat = docController.messages[index];
-                    return chat.role == 'bot'
-                        ?
+            () => ListView.builder(
+              controller: docController.scroll,
+              physics: const BouncingScrollPhysics(),
+              itemCount: docController.messages.length,
+              itemBuilder: (context, index) {
+                final chat = docController.messages[index];
+                return chat.role == 'bot'
+                    ?
                     // bot
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Column(
-                          children: [
-                            CircleAvatar(
-                              child: Lottie.asset(
-                                'assets/robo.json',
-                                width: 70,
-                                height: 70,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Column(
+                            children: [
+                              CircleAvatar(
+                                child: Lottie.asset(
+                                  'assets/robo.json',
+                                  width: 70,
+                                  height: 70,
+                                ),
                               ),
-                            ),
-                            IconButton(onPressed: () => copyText(chat.part),
-                                icon: const Icon(
-                                  Icons.copy_sharp,
-                                  size: 20 ,
-
-                                )
-                            )
-                          ],
-                        ),
-                        const SizedBox(width: 6,),
-                        Container(
+                              IconButton(
+                                  onPressed: () => copyText(chat.part),
+                                  icon: const Icon(
+                                    Icons.copy_sharp,
+                                    size: 20,
+                                  ))
+                            ],
+                          ),
+                          const SizedBox(
+                            width: 6,
+                          ),
+                          Container(
                             constraints: const BoxConstraints(maxWidth: 270),
-                            margin: const EdgeInsets.fromLTRB(0,5,0,5),
+                            margin: const EdgeInsets.fromLTRB(0, 5, 0, 5),
                             padding: const EdgeInsets.all(10),
                             decoration: const BoxDecoration(
                               color: Colors.grey,
@@ -95,66 +95,68 @@ class _ChatGeometryState extends State<ChatGeometry> {
                                   topLeft: Radius.zero,
                                   topRight: Radius.circular(15),
                                   bottomLeft: Radius.circular(15),
-                                  bottomRight: Radius.circular(15)
-                              ),
+                                  bottomRight: Radius.circular(15)),
                             ),
-                            child: chat.part.isNotEmpty ? Text(
-                              chat.part,
-                              style: const TextStyle(color: Colors.white),
-                            ):
-                            Lottie.asset(
-                              'assets/typing.json',
-                              width: 40,
-                              height: 60,
-                            ),
-                        ),
-                      ],
-                    )
-                        :
+                            child: chat.part.isNotEmpty
+                                ? Text(
+                                    chat.part,
+                                    style: const TextStyle(color: Colors.white),
+                                  )
+                                : Lottie.asset(
+                                    'assets/typing.json',
+                                    width: 40,
+                                    height: 60,
+                                  ),
+                          ),
+                        ],
+                      )
+                    :
                     // user
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          constraints: const BoxConstraints(maxWidth: 270),
-                          padding: const EdgeInsets.all(10),
-                          margin: const EdgeInsets.fromLTRB(0,5,0,5),
-                          decoration: const BoxDecoration(
-                            color: Colors.blue,
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(15),
-                                topRight: Radius.zero,
-                                bottomLeft: Radius.circular(15),
-                                bottomRight: Radius.circular(15)
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            constraints: const BoxConstraints(maxWidth: 270),
+                            padding: const EdgeInsets.all(10),
+                            margin: const EdgeInsets.fromLTRB(0, 5, 0, 5),
+                            decoration: const BoxDecoration(
+                              color: Colors.blue,
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(15),
+                                  topRight: Radius.zero,
+                                  bottomLeft: Radius.circular(15),
+                                  bottomRight: Radius.circular(15)),
+                            ),
+                            child: Column(
+                              children: [
+                                if (chat.filePath != null)
+                                  IconButton(
+                                    icon: const Icon(
+                                        Icons.my_library_books_sharp),
+                                    iconSize: 100,
+                                    onPressed: () {
+                                      OpenFile.open(chat.filePath);
+                                    },
+                                  ),
+                                Text(
+                                  chat.part,
+                                  style: const TextStyle(color: Colors.white),
+                                ),
+                              ],
                             ),
                           ),
-                          child: Column(
-                            children: [
-                              if (chat.filePath != null)
-                                IconButton(icon:const Icon(Icons.my_library_books_sharp),
-                                  iconSize: 100,
-                                  onPressed: () {
-                                    OpenFile.open(chat.filePath);
-                                  },),
-                              Text(
-                                chat.part,
-                                style: const TextStyle(color: Colors.white),
-                              ),
-                            ],
+                          const SizedBox(
+                            width: 6,
                           ),
-                        ),
-                        const SizedBox(width: 6,),
-                        const CircleAvatar(
-                          child: Icon(Icons.person
-                          ),
-                        )
-                      ],
-                    );
-                  },
-                ),
-              )
-          ),
+                          const CircleAvatar(
+                            child: Icon(Icons.person),
+                          )
+                        ],
+                      );
+              },
+            ),
+          )),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
@@ -166,12 +168,15 @@ class _ChatGeometryState extends State<ChatGeometry> {
               child: Row(
                 children: [
                   IconButton(
-                    icon: hasPicked  ? const Icon(Icons.library_books): const Icon(Icons.attach_file),
+                    icon: hasPicked
+                        ? const Icon(Icons.library_books)
+                        : const Icon(Icons.attach_file),
                     onPressed: () async {
                       final result = await FilePicker.platform.pickFiles(
                         type: FileType.custom,
-                        allowedExtensions: ['pdf', 'doc'],);
-                      if (result != null){
+                        allowedExtensions: ['pdf', 'doc'],
+                      );
+                      if (result != null) {
                         setState(() {
                           hasPicked = true;
                           filePath = result.files.first;
@@ -186,50 +191,57 @@ class _ChatGeometryState extends State<ChatGeometry> {
                         hintText: 'Type a message...',
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide.none, // This removes the border
+                          borderSide:
+                              BorderSide.none, // This removes the border
                         ),
                         filled: true, // To give a slight background color
                       ),
                     ),
                   ),
                   if (isLoading)
-                    const Icon(Icons.stop_circle) else IconButton(
-                      icon: const Icon(Icons.send),
-                      onPressed: () async {
-                        final text = _controller.text;
-                        if (text.isNotEmpty) {
-                          setState(() {
-                            isLoading = true;
-                          });
-                          File? pathStr;
-                          if (filePath != null)
-                          {
-                            final newFile = await docController.saveFile(filePath);
-                            docController.addMessage(ChatDoc(role: 'user', part: text, filePath: newFile.path));
-                            pathStr = newFile;
+                    const Icon(Icons.stop_circle)
+                  else
+                    IconButton(
+                        icon: const Icon(Icons.send),
+                        onPressed: () async {
+                          final text = _controller.text;
+                          if (text.isNotEmpty) {
+                            setState(() {
+                              isLoading = true;
+                            });
+                            File? pathStr;
+                            if (filePath != null) {
+                              final newFile =
+                                  await docController.saveFile(filePath);
+                              docController.addMessage(ChatDoc(
+                                  role: 'user',
+                                  part: text,
+                                  filePath: newFile.path));
+                              pathStr = newFile;
+                            } else {
+                              docController.addMessage(
+                                  ChatDoc(role: 'user', part: text));
+                            }
+                            docController
+                                .addMessage(ChatDoc(role: 'bot', part: ''));
+                            docController.scroll_down();
+                            _controller.clear();
+                            final data =
+                                await docController.getMessage(text, pathStr);
+                            docController.lastMessage();
+                            docController
+                                .addMessage(ChatDoc(role: 'bot', part: data!));
+                            docController.scroll_down();
+                            setState(() {
+                              hasPicked = false;
+                              isLoading = false;
+                              filePath = null;
+                            });
                           }
-                          else{
-                            docController.addMessage(ChatDoc(role: 'user', part: text));
-                          }
-                          docController.addMessage(ChatDoc(role: 'bot', part: ''));
-                          docController.scroll_down();
-                          _controller.clear();
-                          final data = await docController.getMessage(text, pathStr);
-                          docController.lastMessage();
-                          docController.addMessage(ChatDoc(role: 'bot', part: data!));
-                          docController.scroll_down();
-                          setState(() {
-                            hasPicked = false;
-                            isLoading = false;
-                            filePath = null;
-                          });
-                        }
-                      }
-                  ),
+                        }),
                 ],
               ),
-            )
-            ,
+            ),
           ),
         ],
       ),

@@ -9,10 +9,11 @@ import 'package:permission_handler/permission_handler.dart';
 import '../chat_objects/chat_image.dart';
 import 'package:http/http.dart' as http;
 
+import '../model/global.dart';
+
 class ImageController extends GetxController {
   var messages = <ChatImage>[
-    ChatImage(
-        role: 'bot', part: 'Hello, How can i help you today?')
+    ChatImage(role: 'bot', part: 'Hello, How can i help you today?')
   ].obs;
   final scroll = ScrollController();
 
@@ -31,7 +32,6 @@ class ImageController extends GetxController {
     messages.clear();
     chatBox.clear();
   }
-
 
   void lastMessage() {
     if (messages.isNotEmpty) {
@@ -73,34 +73,37 @@ class ImageController extends GetxController {
   }
 
   Future<String?> getMessage(msg, file) async {
+    var timeout = 3;
     if (file != null) {
-      try {
-        var mimeType = lookupMimeType(file.path);
+      String resData = 'Internet ERROR: Please resend previous message.';
+      while (timeout >= 0) {
+        try {
+          var mimeType = lookupMimeType(file.path);
+          var request = http.MultipartRequest(
+              'POST', Uri.parse('${serverUrl}generate_media/'));
+          request.files
+              .add(await http.MultipartFile.fromPath('file', file!.path));
+          request.fields['prompt'] = msg;
+          request.fields['mime'] = mimeType!;
+          request.headers['Content-Type'] = 'multipart/form-data';
 
-        var request = http.MultipartRequest(
-            'POST', Uri.parse('https://bevel-ai.onrender.com/generate_media/'));
-        request.files.add(
-            await http.MultipartFile.fromPath('file', file!.path));
-        request.fields['prompt'] = msg;
-        request.fields['mime'] = mimeType!;
-        request.headers['Content-Type'] = 'multipart/form-data';
+          var response = await request.send();
 
-        var response = await request.send();
-
-        if (response.statusCode == 200) {
-          final responseData = await response.stream.bytesToString();
-          final data = responseData;
-          return data;
-        } else {
-          // Handle the error accordingly
-          return 'Failed to load data';
+          if (response.statusCode == 200) {
+            final responseData = await response.stream.bytesToString();
+            final data = responseData;
+            resData = data;
+            break;
+          } else {
+            // Handle the error accordingly
+            timeout--;
+          }
+        } catch (e) {
+          timeout--;
         }
       }
-      catch (e) {
-        return 'Error Message: $e';
-      }
-    }
-    else{
+      return resData;
+    } else {
       final res = promptMessage(msg);
       return res;
     }
@@ -108,26 +111,30 @@ class ImageController extends GetxController {
 
   Future<String?> promptMessage(msg) async {
     final history = buildHistory();
-    try{
-      var request = await http.post(
-        Uri.parse('https://bevel-ai.onrender.com/generate/'),
-        headers: {"Content-Type": "application/json"},
-        body: jsonEncode({"prompt": msg, "history": history}),
-      );
+    var timeout = 3;
 
-      if (request.statusCode == 200) {
-        final data = request.body;
-        return data;
-      } else {
-        return 'Failed to load data';
+    String resData = 'Internet ERROR: Please resend previous message.';
+    while (timeout >= 0) {
+      try {
+        var request = await http.post(
+          Uri.parse('${serverUrl}generate/'),
+          headers: {"Content-Type": "application/json"},
+          body: jsonEncode({"prompt": msg, "history": history}),
+        );
+
+        if (request.statusCode == 200) {
+          final data = request.body;
+          resData = data;
+          break;
+        } else {
+          timeout--;
+        }
+      } catch (e) {
+        timeout--;
       }
     }
-    catch(e){
-      return 'Error Message: $e';
-    }
-
+    return resData;
   }
-
 
   @override
   void onInit() {
