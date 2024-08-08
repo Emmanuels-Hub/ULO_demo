@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:mime/mime.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:ulo/model/strg_perm.dart';
 import '../chat_objects/chat_geometry.dart';
 import 'package:http/http.dart' as http;
 
@@ -46,11 +47,11 @@ class MathController extends GetxController {
   }
 
   Future<File> saveFile(file) async {
-    PermissionStatus status = await Permission.storage.status;
-    if (!status.isGranted) {
-      status = await Permission.storage.request();
+    bool getStatus = await getStoragePermission();
+    if (!getStatus) {
+      await Permission.storage.request();
     }
-    if (status.isGranted) {
+    if (getStatus) {
       // Permission granted, proceed with file operation
       final newFile = File(file.path);
       await FileSaver.instance
