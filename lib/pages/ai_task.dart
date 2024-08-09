@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ulo/pages/school_ai.dart';
 import 'DocQA.dart';
 import 'ImgCom.dart';
 import 'audCon.dart';
@@ -52,6 +53,53 @@ class Task extends StatelessWidget {
                   hoverColor: Colors.orange,
                   onPressed: () {
                     Get.to(() => const ChatMe());
+                  },
+                  icon: const Icon(
+                    Icons.navigate_next,
+                    size: 30,
+                  ))
+            ],
+          ),
+        ),
+        Container(
+          height: 70,
+          margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          decoration: const BoxDecoration(
+            color: Colors.black12,
+            borderRadius: BorderRadius.all(Radius.circular(20)),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  CircleAvatar(
+                    radius: 30,
+                    backgroundImage: AssetImage('assets/slider/2.png'),
+                  ),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'School AI',
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
+                      Text('Get Information from School')
+                    ],
+                  ),
+                ],
+              ),
+              IconButton(
+                  hoverColor: Colors.orange,
+                  onPressed: () {
+                    Get.to(() => const SchoolChat());
                   },
                   icon: const Icon(
                     Icons.navigate_next,
