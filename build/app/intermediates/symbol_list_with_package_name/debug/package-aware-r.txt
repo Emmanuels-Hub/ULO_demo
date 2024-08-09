@@ -376,6 +376,8 @@ color bright_foreground_material_dark
 color bright_foreground_material_light
 color button_material_dark
 color button_material_light
+color call_notification_answer_color
+color call_notification_decline_color
 color dim_foreground_disabled_material_dark
 color dim_foreground_disabled_material_light
 color dim_foreground_material_dark
@@ -629,6 +631,12 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable ic_call_answer
+drawable ic_call_answer_low
+drawable ic_call_answer_video
+drawable ic_call_answer_video_low
+drawable ic_call_decline
+drawable ic_call_decline_low
 drawable launch_background
 drawable notification_action_background
 drawable notification_bg
@@ -638,6 +646,7 @@ drawable notification_bg_low_pressed
 drawable notification_bg_normal
 drawable notification_bg_normal_pressed
 drawable notification_icon_background
+drawable notification_oversize_large_icon_bg
 drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
@@ -726,12 +735,14 @@ id default_activity_button
 id dialog_button
 id disableHome
 id edit_query
+id edit_text_id
 id end
 id expand_activities_button
 id expanded_menu
 id forever
 id fragment_container_view_tag
 id group_divider
+id hide_ime_id
 id home
 id homeAsUp
 id icon
@@ -761,6 +772,7 @@ id parentPanel
 id progress_circular
 id progress_horizontal
 id radio
+id report_drawn
 id right_icon
 id right_side
 id rtl
@@ -867,6 +879,8 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout custom_dialog
+layout ime_base_split_test_activity
+layout ime_secondary_split_test_activity
 layout notification_action
 layout notification_action_tombstone
 layout notification_template_custom_big
@@ -906,6 +920,13 @@ string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
 string androidx_startup
+string call_notification_answer_action
+string call_notification_answer_video_action
+string call_notification_decline_action
+string call_notification_hang_up_action
+string call_notification_incoming_text
+string call_notification_ongoing_text
+string call_notification_screening_text
 string search_menu_title
 string status_bar_notification_info_overflow
 style AlertDialog_AppCompat
@@ -1313,3 +1334,4 @@ styleable View android_theme android_focusable paddingEnd paddingStart theme
 styleable ViewBackgroundHelper android_background backgroundTint backgroundTintMode
 styleable ViewStubCompat android_id android_layout android_inflatedId
 xml filepaths
+xml flutter_image_picker_file_paths
